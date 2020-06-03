@@ -10,4 +10,7 @@
 - Added non functioning buttons for interaction
 - Customized buttons added styling
 - Changed background color to green
-- 
+- assigned variables to buttons for javaScript
+- Assigned eventlistener to start button
+- Started Creating questions array
+-
