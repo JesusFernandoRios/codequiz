@@ -6,7 +6,7 @@ body {
     height: 100vh;
     justify-content: center;
     display: flex;
-    background-color: rgb(2, 83, 121);
+    background-color: rgb(2, 121, 28);
 }
 
 .container {
@@ -14,7 +14,17 @@ body {
     text-align: center;
     background-color: white;
     max-width: 80%;
-    box-shadow: 0 0 10px 2px;
+    box-shadow: 0 0 10px 5px;
+}
 
-    
+.answers-grid {
+
+}
+
+.Buttons {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
 }

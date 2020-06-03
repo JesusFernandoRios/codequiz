@@ -8,3 +8,6 @@
 - styled background of main page,
 - Created proper space for header and questions
 - Added non functioning buttons for interaction
+- Customized buttons added styling
+- Changed background color to green
+- 
