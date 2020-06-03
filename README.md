@@ -1,7 +1,7 @@
-# codequiz
+# Codequiz
 
 # Quiz
-- This quiz contains Javascript fundamental questions design to test the knowledge of aspiring web developers
+- This quiz contains Javascript fundamental questions designed to test the knowledge of aspiring web developers
 
 # Log 6/2/20
 - Created starter files for html, javascript and css.
