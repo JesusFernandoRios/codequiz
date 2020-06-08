@@ -14,3 +14,4 @@
 - Assigned eventlistener to start button
 - Started Creating questions using object literals
 - Created working timer, added the function for startGame.
+- Testing methods to run questions at Start click
