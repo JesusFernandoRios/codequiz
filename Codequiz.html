@@ -14,26 +14,34 @@
 </head>
 
 <body>
+
+  <div id="timer" class="hide">
+    <span id="minutes">0</span> : 
+    <span id="seconds">0</span>
+  </div>
+
   <div class="container">
-    <div class="Intro hidden">
-      <h1>Hello Welcome To the Code Quiz</h1>
+    
+    <div class=>
+      <h2>Quiz</h1>
     </div>
-    <hr class="hidden">
-    <div class="Questions hide hidden">Questions will be posted here Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Architecto deserunt a corporis, consequatur ad et error cupiditate cum dolorum, possimus quasi minima earum!
-      Fugiat dolorum ducimus laborum hic consequuntur ea. 
-    </div>
-      <hr class="hidden">
-    <div class="answers-grid hidden">
+    <hr>
+    <div class="question-container hide">
+
+      <div id="question">question</div>
+
+      <div class="answers-grid hide">
       <button type="button" class="btn btn-outline-dark" id="box_1">Answer 1</button>
       <button type="button" class="btn btn-outline-dark" id="box_2">Answer 2</button>
       <button type="button" class="btn btn-outline-dark" id="box_3">Answer 3</button>
       <button type="button" class="btn btn-outline-dark" id="box_4">Answer 4</button>
+      </div>
     </div>
-    <hr class="hidden">
+    
+    <hr >
     <div class="buttons">
       <button type="button" class="btn btn-primary btn-lg" id="start_game">Start</button>
-      <button type="button" class="btn btn-primary btn-lg hidden">Next</button>
+      <button type="button" class="btn btn-primary btn-lg hide" id="next">Next</button>
 
     </div>
   </div>

@@ -12,5 +12,5 @@
 - Changed background color to green
 - assigned variables to buttons for javaScript
 - Assigned eventlistener to start button
-- Started Creating questions array
--
+- Started Creating questions using object literals
+- Created working timer, added the function for startGame.

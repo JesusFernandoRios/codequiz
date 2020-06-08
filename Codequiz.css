@@ -17,14 +17,19 @@ body {
     box-shadow: 0 0 10px 5px;
 }
 
-.answers-grid {
-
+h2 {
+    border-radius: 10px;
+    background-color: rgb(0, 132, 255);
+    margin-top: 10px;
 }
+
+
+
 
 .buttons {
     margin: 10px;
 }
 
-.hidden {
+.hide {
     display: none;
 }
