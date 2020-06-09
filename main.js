@@ -1,6 +1,6 @@
 // Start and Next Buttons
 const start = document.getElementById("start_game");
-const next = document.querySelector("next")
+const next = document.querySelector("next");
 
 //Answer Buttons
 let answersGrid = document.querySelector(".answers-grid");
@@ -11,102 +11,97 @@ let box3 = document.querySelector("#box_3");
 let box4 = document.querySelector("#box_4");
 
 //timer
-let counterTime = document.querySelector("#timer")
+let counterTime = document.querySelector("#timer");
 
 //question input
-let questionContainer = document.querySelector(".question-container")
-let questionInsert = document.querySelector("#question")
+let questionContainer = document.querySelector(".question-container");
+let questionInsert = document.querySelector("#question");
 
 
 
-start.addEventListener("click", startGame)
+start.addEventListener("click", startGame);
 
+function startGame() {
+  startTimer();
+    runningQuestionIndex = 0
+    renderQuestion()
+  // created function to randomize questions on start//
+  //shuffleQuestions = questions.sort(() =>Math.random() - 0.5);
+  //currentQuestions = 0;
+  start.classList.add("hide");
+  questionContainer.classList.remove("hide");
+  answersGrid.classList.remove("hide");
+  counterTime.classList.remove("hide");
+}
 
-function startGame () {
-    startTimer()
-    showQuestions()
-    
-
-
-
-    currentQuestionIndex = 0
-    start.classList.add('hide')
-    questionContainer.classList.remove("hide");
-    answersGrid.classList.remove("hide");
-    counterTime.classList.remove("hide");
-
+function renderQuestion(){
+    let q = questions[runningQuestionIndex];
+    questionInsert.innerHTML ="<p>" + q.question + "</p>"
+    box1.innerHTML = q.text1;
+    box2.innerHTML = q.text2;
+    box3.innerHTML = q.text3;
+    box4.innerHTML = q.text4;
 }
 
 
-function nextQuestion () {
 
+
+
+function nextQuestion() {
+    runningQuestionIndex++
+    renderQuestion()
 }
 
-function showQuestions (question){
-    questionInsert.innerText = question.question
-    question.answers.forEach(answer => {
-        const button = document.createElement("button")
-        button.innerText = answer.text
-        button.classList.add("btn btn-outline-dark")
-        if (answer.correct){
-            button.dataset.correct = answer.correct
-        }
-    })
 
-
-   
-}
 
 
 // Timer Function
 
 function startTimer() {
+  var seconds = 600;
 
-    var seconds =600;
-
-    timer = setInterval(function() {
-    seconds --;
+  timer = setInterval(function () {
+    seconds--;
     document.getElementById("seconds").innerText = seconds % 60;
-        document.getElementById("minutes").innerText = parseInt(seconds / 60);
-    }, 1000);
-
+    document.getElementById("minutes").innerText = parseInt(seconds / 60);
+  }, 1000);
 }
 
-
 // Questions Part
-const questions = [
-    {
-      question: 'What is a Variable?',
-      answers: [
-        { text: 'a cascading style sheet', correct: false },
-        { text: 'a “named storage” for data.', correct: true},
-        { text: 'a number assigned to an equation', correct: false },
-        { text: 'a way to repeat the same code multiple times', correct: false }
-        ]
-    },
-    {
-      question: 'In JavaScript what are Strings used for?',
-      answers: [
-        { text: 'to perform different actions based on different conditions', correct: false },
-        { text: 'to explain JavaScript code, and to make it more readable', correct: false },
-        { text: 'storing and manipulating text', correct: true },
-        { text: 'code designed to perform a particular task', correct: false }
-      ]
-    },
-    {
-      question: 'JavaScript programs can be inserted into any part of an HTML document with the help of which tag?',
-      answers: [
-        { text: '<script>', correct: true },
-        { text: '<java>', correct: false },
-        { text: '<href>', correct: false },
-        { text: '<input>', correct: false }
-      ]
-    },
-    {
-      question: 'The "if" statement evaluates a condition in parentheses and, if the result is ______, executes a block of code.',
-      answers: [
-        { text: 'False', correct: false },
-        { text: 'True', correct: true }
-      ]
-    }
-  ]
+let questions = [
+  {
+    question: "What is a Variable?",
+    text1: "a cascading style sheet",
+    text2: "a “named storage” for data.",
+    text3: "a number assigned to an equation",
+    text4: "a way to repeat the same code multiple times",
+    correct: "2"
+    
+  },
+  {
+    question: 'In JavaScript what are Strings used for?',
+    text1: 'to perform different actions based on different conditions',
+    text2: 'to explain JavaScript code, and to make it more readable',
+    text3: 'storing and manipulating text',
+    text4: 'code designed to perform a particular task', 
+    correct: "2"
+  },
+  {
+    question: 'JavaScript programs can be inserted into any part of an HTML document with the help of which tag?',
+    text1: '<script>',
+    text2: '<java>',
+    text3: '<href>', 
+    text4: '<input>',
+    correct: "1"
+    
+  },
+  {
+    question: 'The "if" statement evaluates a condition in parentheses and, if the result is ______, executes a block of code.',
+    text1: 'False',
+    text2: 'True', 
+    correct: "2"
+  }
+]
+
+let lastQuestionIndex = questions.length - 1;
+let runningQuestionIndex = 0;
