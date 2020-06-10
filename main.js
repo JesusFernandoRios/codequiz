@@ -21,6 +21,11 @@ let scoreContainer = document.querySelector("#score");
 // this variable will input the live score of player
 let scoreKeeper = document.querySelector("#score-counter");
 
+let initials = document.querySelector("#initials-label");
+let initialsInput = document.querySelector("#initials-input");
+
+
+
 start.addEventListener("click", startGame);
 
 // Questions Part
@@ -68,9 +73,6 @@ let lastQuestionIndex = questions.length - 1;
 let runningQuestionIndex = 0;
 let count = 0;
 
-if( checkAnswer == false){
-  seconds - 24;
-}
 
 function startGame() {
   startTimer();
@@ -91,11 +93,17 @@ function renderQuestion() {
   box3.innerHTML = q.box3;
 }
 
-function highScore() {}
 
 function nextQuestion() {
-  runningQuestionIndex++;
-  renderQuestion();
+  if (runningQuestionIndex >= lastQuestionIndex) {
+      questionContainer.innerHTML = "You scored " + count + "/ " + questions.length;
+      initials.classList.remove("hide");
+      initialsInput.classList.remove("hide");
+      }
+      else{
+      runningQuestionIndex++;
+      renderQuestion();
+    }
 }
 
 function checkAnswer(answer) {
@@ -109,6 +117,8 @@ function checkAnswer(answer) {
     if (count > 0) {
       count--;
     }
+
+    
     scoreKeeper.innerHTML = count;
     alert("Wrong answer, Try again");
   }
@@ -118,8 +128,10 @@ function checkAnswer(answer) {
 // Timer Function
 
 function startTimer() {
+
+ 
   let seconds = 120;
-  
+
   timer = setInterval(function () {
     seconds--;
     document.getElementById("seconds").innerText = seconds % 60;

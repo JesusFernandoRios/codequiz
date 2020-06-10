@@ -3,7 +3,7 @@
 # Quiz
 - This quiz contains Javascript fundamental questions designed to test the knowledge of aspiring web developers
 
-# Log 6/2/20
+# Started On 6/2/20
 - Created starter files for html, javascript and css.
 - styled background of main page,
 - Created proper space for header and questions
@@ -18,4 +18,7 @@
 - added and modified questions
 - created and added a check answer fuction that will keep track of correct answers
 - updated score counter, keeps track of correct and wrong answer
--
+- Created input tag for highScore Logging in locla Storage,
+- added hide features to input and label,
+- fixed issue of what comes next after last question
+- last page of of quiz shows users score and a promt to add their initials
