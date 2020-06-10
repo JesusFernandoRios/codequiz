@@ -1,6 +1,6 @@
 // Start and Next Buttons
 const start = document.getElementById("start_game");
-const next = document.querySelector("next");
+const restart = document.querySelector("#restart");
 
 //Answer Buttons
 let answersGrid = document.querySelector(".answers-grid");
@@ -18,15 +18,20 @@ let questionInsert = document.querySelector("#question");
 
 // Score
 let scoreContainer = document.querySelector("#score");
+
 // this variable will input the live score of player
 let scoreKeeper = document.querySelector("#score-counter");
 
+// Variables for User Initials input
 let initials = document.querySelector("#initials-label");
 let initialsInput = document.querySelector("#initials-input");
+let saveBtn = document.querySelector("#saveBtn");
 
 
 
 start.addEventListener("click", startGame);
+
+
 
 // Questions Part
 let questions = [
@@ -76,6 +81,7 @@ let count = 0;
 
 function startGame() {
   startTimer();
+
   renderQuestion();
 
   start.classList.add("hide");
@@ -96,9 +102,12 @@ function renderQuestion() {
 
 function nextQuestion() {
   if (runningQuestionIndex >= lastQuestionIndex) {
-      questionContainer.innerHTML = "You scored " + count + "/ " + questions.length;
+      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
       initials.classList.remove("hide");
       initialsInput.classList.remove("hide");
+      stopTimer();
+      scoreContainer.classList.add("hide");
+      saveBtn.classList.remove("hide");
       }
       else{
       runningQuestionIndex++;
@@ -117,20 +126,47 @@ function checkAnswer(answer) {
     if (count > 0) {
       count--;
     }
-
-    
     scoreKeeper.innerHTML = count;
     alert("Wrong answer, Try again");
   }
   
 }
 
+// HighScore Keeping -Local Storage_
+let scores = [];
+
+const highscoreKeeper = (event)=>{
+  event.preventDefault(); // this stops the form submitting
+
+  let input = {
+    score: count,
+    initials: document.querySelector("#initials-input").value
+  }
+
+  scores.push(input);
+  document.querySelector("form").reset(); // this clears the form for the next entry
+
+  console.warn('added', {scores} );
+
+  //add to local storage
+  localStorage.setItem("HighScores", JSON.stringify(scores));
+}
+
+ // i learned to always start with DOMContentLoaded, to make sure the page is loaded before we try to run things
+
+  document.addEventListener("DOMContentLoaded", ()=> {
+      document.getElementById("saveBtn").addEventListener("click", highscoreKeeper);
+  });
+
+//saveBtn.addEventListener("click", highscoreKeeper);
+
+
 // Timer Function
 
 function startTimer() {
 
- 
-  let seconds = 120;
+ let seconds = 120;
+
 
   timer = setInterval(function () {
     seconds--;

@@ -22,3 +22,4 @@
 - added hide features to input and label,
 - fixed issue of what comes next after last question
 - last page of of quiz shows users score and a promt to add their initials
+- Added a Const Variable that sends all information gathered from the highscore initials input and sends it to an object

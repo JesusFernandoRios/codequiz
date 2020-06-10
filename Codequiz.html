@@ -34,14 +34,16 @@
       <button type="button" class="btn btn-outline-primary" id="box_3" onclick="checkAnswer('3')"></button>
       </div>
     </div>
-
-    <label for="initials" id="initials-label" class="hide" > Enter your Initials</label>
-    <input type="text" name="initials" id="initials-input" class="hide" >
+    <form>
+      <label for="initials" id="initials-label" class="hide" > Enter your Initials</label>
+      <input type="text" name="initials" id="initials-input" class="hide" >
+      <button id="saveBtn" class="hide">Save</button>
+    </form>
 
     <hr >
     <div class="buttons">
       <button type="button" class="btn btn-primary btn-lg" id="start_game">Start</button>
-      <button type="button" class="btn btn-primary btn-lg hide" id="next">Next</button>
+      <button type="button" class="btn btn-primary btn-lg hide" id="restart">Restart</button>
     </div>
     <hr>
     <div id="score" class="hide">Score :<span id="score-counter"></span></div>
