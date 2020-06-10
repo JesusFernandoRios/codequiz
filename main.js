@@ -26,7 +26,7 @@ let scoreKeeper = document.querySelector("#score-counter");
 let initials = document.querySelector("#initials-label");
 let initialsInput = document.querySelector("#initials-input");
 let saveBtn = document.querySelector("#saveBtn");
-
+let HighScoreDiv = document.querySelector("#highscore")
 
 
 start.addEventListener("click", startGame);
@@ -139,14 +139,14 @@ const highscoreKeeper = (event)=>{
   event.preventDefault(); // this stops the form submitting
 
   let input = {
-    score: count,
+    score: count + "",
     initials: document.querySelector("#initials-input").value
   }
 
   scores.push(input);
   document.querySelector("form").reset(); // this clears the form for the next entry
 
-  console.warn('added', {scores} );
+ // console.warn('added', {scores} ); i was using this console log to text the scores array
 
   //add to local storage
   localStorage.setItem("HighScores", JSON.stringify(scores));
@@ -158,7 +158,11 @@ const highscoreKeeper = (event)=>{
       document.getElementById("saveBtn").addEventListener("click", highscoreKeeper);
   });
 
-//saveBtn.addEventListener("click", highscoreKeeper);
+saveBtn.addEventListener("click", function(){
+  HighScoreDiv.classList.remove("hide")
+  HighScoreDiv.innerHTML = localStorage.getItem("HighScores");
+
+});
 
 
 // Timer Function
