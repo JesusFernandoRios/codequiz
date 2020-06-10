@@ -132,7 +132,8 @@ function checkAnswer(answer) {
   
 }
 
-// HighScore Keeping -Local Storage_
+// HighScore Keeping -Local Storage-
+
 let scores = [];
 
 const highscoreKeeper = (event)=>{
@@ -146,7 +147,7 @@ const highscoreKeeper = (event)=>{
   scores.push(input);
   document.querySelector("form").reset(); // this clears the form for the next entry
 
- // console.warn('added', {scores} ); i was using this console log to text the scores array
+ //console.warn('added', {scores} ); //i was using this console log to test the scores array
 
   //add to local storage
   localStorage.setItem("HighScores", JSON.stringify(scores));
@@ -158,9 +159,12 @@ const highscoreKeeper = (event)=>{
       document.getElementById("saveBtn").addEventListener("click", highscoreKeeper);
   });
 
+  // Save highscore Button function
+
 saveBtn.addEventListener("click", function(){
-  HighScoreDiv.classList.remove("hide")
-  HighScoreDiv.innerHTML = localStorage.getItem("HighScores");
+  HighScoreDiv.classList.remove("hide");
+  HighScoreDiv.innerHTML= localStorage.getItem("HighScores")
+  
 
 });
 
@@ -183,16 +187,3 @@ function stopTimer() {
   clearInterval(timer);
 }
 
-// this block of code was in the checkAnswer function after the else condition
-// if(runningQuestionIndex < lastQuestionIndex){
-//   runningQuestionIndex++;
-//   renderQuestion();
-// }
-// else{
-//   clearInterval(startTimer);
-// }
-
-// this code will work once i figure out how to go over the questions
-// if (runningQuestionIndex >= questions.length) {
-//   questionContainer.innerHTML =
-//     "You scored " + count + "/ " + questions.length;
