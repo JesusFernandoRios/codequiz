@@ -16,3 +16,6 @@
 - Created working timer, added the function for startGame.
 - Testing methods to run questions at Start click
 - added and modified questions
+- created and added a check answer fuction that will keep track of correct answers
+- updated score counter, keeps track of correct and wrong answer
+-
