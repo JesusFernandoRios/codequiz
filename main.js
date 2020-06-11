@@ -108,6 +108,7 @@ function nextQuestion() {
       stopTimer();
       scoreContainer.classList.add("hide");
       saveBtn.classList.remove("hide");
+
       }
       else{
       runningQuestionIndex++;
