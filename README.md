@@ -12,8 +12,7 @@
 - Upon Choosing the right answer you will receive 1 point
 - if Chosen incorrectly 1 point will be deducted from score
 - If Timer Reaches 0, The Quiz is over,
-- When All questions are Answered Correctly, you will be allowed to record you score and your initials
--
+- When all questions are Answered Correctly, You will be allowed to record you score and your initials
 
 
 
