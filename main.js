@@ -81,9 +81,8 @@ let count = 0;
 
 function startGame() {
   startTimer();
-
   renderQuestion();
-
+  
   start.classList.add("hide");
   questionContainer.classList.remove("hide");
   answersGrid.classList.remove("hide");
@@ -97,6 +96,7 @@ function renderQuestion() {
   box1.innerHTML = q.box1;
   box2.innerHTML = q.box2;
   box3.innerHTML = q.box3;
+
 }
 
 
@@ -180,7 +180,7 @@ saveBtn.addEventListener("click", function(){
   HighScoreDiv.classList.remove("hide");
   let local = localStorage.getItem("HighScores");
   HighScoreDiv.innerHTML= local;
-  
+  alert("refresh Page to Start Again")
 
 });
 
@@ -196,6 +196,17 @@ function startTimer() {
     seconds--;
     document.getElementById("seconds").innerText = seconds % 60;
     document.getElementById("minutes").innerText = parseInt(seconds / 60);
+    if(seconds == 0 - 1){
+      alert ("Time Ran Out")
+      stopTimer()
+      counterTime.classList.add("hide")
+      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
+      initials.classList.remove("hide");
+      initialsInput.classList.remove("hide");
+      scoreContainer.classList.add("hide");
+      saveBtn.classList.remove("hide");
+    }
+  
   }, 1000);
 }
 
