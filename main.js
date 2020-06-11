@@ -179,8 +179,10 @@ const highscoreKeeper = (event)=>{
 saveBtn.addEventListener("click", function(){
   HighScoreDiv.classList.remove("hide");
   let local = localStorage.getItem("HighScores");
-  HighScoreDiv.innerHTML= local;
-  alert("refresh Page to Start Again")
+  let parse = JSON.parse(local);
+  console.log(parse);
+  HighScoreDiv.innerHTML= "score: "+ parse[0].score + " initials: " + parse[0].initials
+  
 
 });
 
