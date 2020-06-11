@@ -26,12 +26,9 @@ let scoreKeeper = document.querySelector("#score-counter");
 let initials = document.querySelector("#initials-label");
 let initialsInput = document.querySelector("#initials-input");
 let saveBtn = document.querySelector("#saveBtn");
-let HighScoreDiv = document.querySelector("#highscore")
-
+let HighScoreDiv = document.querySelector("#highscore");
 
 start.addEventListener("click", startGame);
-
-
 
 // Questions Part
 let questions = [
@@ -78,11 +75,10 @@ let lastQuestionIndex = questions.length - 1;
 let runningQuestionIndex = 0;
 let count = 0;
 
-
 function startGame() {
   startTimer();
   renderQuestion();
-  
+
   start.classList.add("hide");
   questionContainer.classList.remove("hide");
   answersGrid.classList.remove("hide");
@@ -96,35 +92,30 @@ function renderQuestion() {
   box1.innerHTML = q.box1;
   box2.innerHTML = q.box2;
   box3.innerHTML = q.box3;
-
 }
-
 
 function nextQuestion() {
   if (runningQuestionIndex >= lastQuestionIndex) {
-      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
-      initials.classList.remove("hide");
-      initialsInput.classList.remove("hide");
-      stopTimer();
-      scoreContainer.classList.add("hide");
-      saveBtn.classList.remove("hide");
-
-      }
-      else{
-      runningQuestionIndex++;
-      renderQuestion();
-    }
+    questionContainer.innerHTML =
+      "You scored " + count + " / " + questions.length;
+    initials.classList.remove("hide");
+    initialsInput.classList.remove("hide");
+    stopTimer();
+    scoreContainer.classList.add("hide");
+    saveBtn.classList.remove("hide");
+  } else {
+    runningQuestionIndex++;
+    renderQuestion();
+  }
 }
 
 function checkAnswer(answer) {
-  
   if (questions[runningQuestionIndex].correct === answer) {
     count++;
     scoreKeeper.innerHTML = count;
     nextQuestion();
     alert("Correct!!");
   } else {
-
     if (count > 0) {
       count--;
     }
@@ -133,87 +124,81 @@ function checkAnswer(answer) {
     alert("Wrong answer, Try again");
 
     seconds -= 20;
-    if(seconds <= 0){
+    if (seconds <= 0) {
       document.querySelector("#seconds").innerHTML = "0";
       stopTimer();
-      alert("Your Time is out! Game Over")
-      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
+      alert("Your Time is out! Game Over");
+      questionContainer.innerHTML =
+        "You scored " + count + " / " + questions.length;
       initials.classList.remove("hide");
       initialsInput.classList.remove("hide");
       scoreContainer.classList.add("hide");
       saveBtn.classList.remove("hide");
     }
-    
   }
-  
 }
 
 // HighScore Keeping -Local Storage-
 
 let scores = [];
 
-const highscoreKeeper = (event)=>{
+const highscoreKeeper = (event) => {
   event.preventDefault(); // this stops the form submitting
 
   let input = {
     score: count + "",
-    initials: document.querySelector("#initials-input").value
-  }
+    initials: document.querySelector("#initials-input").value,
+  };
 
   scores.push(input);
   document.querySelector("form").reset(); // this clears the form for the next entry
 
- //console.warn('added', {scores} ); //i was using this console log to test the scores array
+  //console.warn('added', {scores} ); //i was using this console log to test the scores array
 
   //add to local storage
   localStorage.setItem("HighScores", JSON.stringify(scores));
-}
+};
 
- // i learned to always start with DOMContentLoaded, to make sure the page is loaded before we try to run things
+// i learned to always start with DOMContentLoaded, to make sure the page is loaded before we try to run things
 
-  document.addEventListener("DOMContentLoaded", ()=> {
-      document.getElementById("saveBtn").addEventListener("click", highscoreKeeper);
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("saveBtn").addEventListener("click", highscoreKeeper);
+});
 
-  // Save highscore Button function
+// Save highscore Button function
 
-saveBtn.addEventListener("click", function(){
+saveBtn.addEventListener("click", function () {
   HighScoreDiv.classList.remove("hide");
   let local = localStorage.getItem("HighScores");
   let parse = JSON.parse(local);
   console.log(parse);
-  HighScoreDiv.innerHTML= "score: "+ parse[0].score + " initials: " + parse[0].initials
-  
-
+  HighScoreDiv.innerHTML =
+    "score: " + parse[0].score + " initials: " + parse[0].initials;
 });
-
 
 // Timer Function
 
 let seconds = 60;
 
-
 function startTimer() {
-
   timer = setInterval(function () {
     seconds--;
     document.getElementById("seconds").innerText = seconds % 60;
     document.getElementById("minutes").innerText = parseInt(seconds / 60);
-    if(seconds == 0 - 1){
-      alert ("Time Ran Out")
-      stopTimer()
-      counterTime.classList.add("hide")
-      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
+    if (seconds == 0 - 1) {
+      alert("Time Ran Out");
+      stopTimer();
+      counterTime.classList.add("hide");
+      questionContainer.innerHTML =
+        "You scored " + count + " / " + questions.length;
       initials.classList.remove("hide");
       initialsInput.classList.remove("hide");
       scoreContainer.classList.add("hide");
       saveBtn.classList.remove("hide");
     }
-  
   }, 1000);
 }
 
 function stopTimer() {
   clearInterval(timer);
 }
-
