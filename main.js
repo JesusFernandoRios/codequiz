@@ -123,11 +123,26 @@ function checkAnswer(answer) {
     nextQuestion();
     alert("Correct!!");
   } else {
+
     if (count > 0) {
       count--;
     }
+
     scoreKeeper.innerHTML = count;
     alert("Wrong answer, Try again");
+
+    seconds -= 20;
+    if(seconds <= 0){
+      document.querySelector("#seconds").innerHTML = "0";
+      stopTimer();
+      alert("Your Time is out! Game Over")
+      questionContainer.innerHTML = "You scored " + count + " / " + questions.length;
+      initials.classList.remove("hide");
+      initialsInput.classList.remove("hide");
+      scoreContainer.classList.add("hide");
+      saveBtn.classList.remove("hide");
+    }
+    
   }
   
 }
@@ -163,7 +178,8 @@ const highscoreKeeper = (event)=>{
 
 saveBtn.addEventListener("click", function(){
   HighScoreDiv.classList.remove("hide");
-  HighScoreDiv.innerHTML= localStorage.getItem("HighScores")
+  let local = localStorage.getItem("HighScores");
+  HighScoreDiv.innerHTML= local;
   
 
 });
@@ -171,10 +187,10 @@ saveBtn.addEventListener("click", function(){
 
 // Timer Function
 
+let seconds = 60;
+
+
 function startTimer() {
-
- let seconds = 120;
-
 
   timer = setInterval(function () {
     seconds--;
