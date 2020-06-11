@@ -33,17 +33,6 @@ h2 {
     margin-right : 5px;
 }
 
-#progress{
-    width : 500px;
-    position: absolute;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
-}
-
-
-
 .buttons {
     margin: 10px;
 }
@@ -54,10 +43,4 @@ h2 {
 
 .hidden {
     display: none;
-}
-
-
-#box_4 {
-    margin-top: 5px;
-    
 }
