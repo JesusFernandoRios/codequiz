@@ -1,4 +1,5 @@
 # Codequiz
+https://jesusfernandorios.github.io/codequiz/
 
 # Quiz
 - This quiz contains Javascript fundamental questions designed to test the knowledge of aspiring web developers
